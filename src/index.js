@@ -21,6 +21,10 @@ class App extends React.Component {
       buttonStyle: {
         color: "#ffffff",
       },
+      buttonDownloadStyle: {
+        height: "50px",
+        width: "162px",
+      },
     };
   }
   _changeActive(id) {
@@ -80,14 +84,31 @@ class Panel extends React.Component {
       <aside className="panel" style={this.props.panelStyle}>
         <h2 className="panel-header">{this.props.data.header}</h2>
         <p className="panel-info">{this.props.data.body}</p>
-        <button
+        {/* <button
           className="panel-button"
           style={this.props.buttonStyle}
           onMouseEnter={this.props._buttonColour}
           onMouseLeave={this.props._buttonColour}
         >
           Read More
-        </button>
+        </button> */}
+        <div className="panel-buttons">
+          <a href="https://apple.com">
+            <img
+              src="https://res.cloudinary.com/dhc0siki5/image/upload/v1613380920/payqin/app_store_grarw1.png"
+              alt=""
+              width="162px"
+            />
+          </a>
+          <a href="https://play.google.com">
+            <img
+              src="https://res.cloudinary.com/dhc0siki5/image/upload/v1613380921/payqin/google_play_ohlmc7.png"
+              alt=""
+              width="162px"
+              height="70px"
+            />
+          </a>
+        </div>
       </aside>
     );
   }
@@ -140,21 +161,24 @@ const data = [
     body:
       "A safe and secure environment for your internet transactions anywhere in the world",
     colour: "#242846",
-    img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/735173/rvc1.jpg",
+    img:
+      /*"https://s3-us-west-2.amazonaws.com/s.cdpn.io/735173/rvc1.jpg"*/ "https://images.unsplash.com/photo-1531471531302-ba2ae5bf6489?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
   },
   {
     id: 1,
     header: "You like it Virtual Or Physical ?",
     body: "You like it virtual or Physical ? We got both for you",
     colour: "#ba9077",
-    img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/735173/rvc2.jpg",
+    img:
+      /*"https://s3-us-west-2.amazonaws.com/s.cdpn.io/735173/rvc2.jpg"*/ "https://images.unsplash.com/photo-1613243555988-441166d4d6fd?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80",
   },
   {
     id: 2,
     header: "Insurance",
     body: "Building the most innovative Insurance platform for Africa",
     colour: "#1ABC9C",
-    img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/735173/rvc3.jpg",
+    img:
+      /*"https://s3-us-west-2.amazonaws.com/s.cdpn.io/735173/rvc3.jpg"*/ "https://smallbizclub.com/wp-content/uploads/2018/09/Types-of-Paperwork-Youll-Have-to-Create.jpg",
   },
   {
     id: 3,
@@ -162,14 +186,16 @@ const data = [
     body:
       "PayQin is the fastest app to convert your money into bitcoin buying and selling. We got you covered",
     colour: "#C0392B",
-    img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/735173/rvc4.jpg",
+    img:
+      /*"https://s3-us-west-2.amazonaws.com/s.cdpn.io/735173/rvc4.jpg"*/ /*https://images.unsplash.com/photo-1560327308-514b0f2e8869?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"*/ "https://images.unsplash.com/photo-1543699539-33a389c5dcfe?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80",
   },
   {
     id: 4,
     header: "Transfer & Merchant Payment",
     body: "Send and Receive Money Instantly",
     colour: "#513B56",
-    img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/735173/rvc5.jpg",
+    img:
+      /*"https://s3-us-west-2.amazonaws.com/s.cdpn.io/735173/rvc5.jpg"*/ "https://images.unsplash.com/photo-1498084393753-b411b2d26b34?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80",
   },
 ];
 

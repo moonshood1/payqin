@@ -33,7 +33,7 @@ class Navbar extends React.Component {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav ml-auto" style={{ fontSize: "17px" }}>
+          <ul className="navbar-nav ml-auto" style={{ fontSize: "15px" }}>
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle navbar_link"
@@ -51,28 +51,28 @@ class Navbar extends React.Component {
                 <a
                   className="dropdown-item"
                   href="#"
-                  style={{ color: "#222222", fontSize: "14px" }}
+                  style={{ color: "#222222", fontSize: "13px" }}
                 >
                   PayQin Cards
                 </a>
                 <a
                   className="dropdown-item"
                   href="#"
-                  style={{ color: "#222222", fontSize: "14px" }}
+                  style={{ color: "#222222", fontSize: "13px" }}
                 >
                   Insurance
                 </a>
                 <a
                   className="dropdown-item"
                   href="#"
-                  style={{ color: "#222222", fontSize: "14px" }}
+                  style={{ color: "#222222", fontSize: "13px" }}
                 >
                   Crypto
                 </a>
                 <a
                   className="dropdown-item"
                   href="#"
-                  style={{ color: "#222222", fontSize: "14px" }}
+                  style={{ color: "#222222", fontSize: "13px" }}
                 >
                   Download
                 </a>

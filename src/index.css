@@ -60,12 +60,22 @@ body,
 .footer_link_styled {
   color: rgba(136, 136, 136, 1);
   font-size: 15px;
-  padding-right: 60px;
+  padding-right: 30px;
 }
 
 .footer_icon_style {
-  color: rgb(47, 100, 161);
-  font-size: 8px;
+  color: #4a90e2;
+  padding-right: 25px;
+  font-size: 18px;
+}
+
+.footer_button {
+  font-size: 14px;
+  text-align: center;
+  width: 100px;
+  height: 40px;
+  border-color: #4a90e2 !important;
+  color: #4a90e2;
 }
 
 .footer_img {
@@ -138,7 +148,7 @@ aside.panel p.panel-info {
   font-size: 1.1rem;
   line-height: 1.8em;
 }
-aside.panel button.panel-button {
+/*aside.panel button.panel-button {
   margin: 1.3rem 3.5rem;
   padding: 0.8em 1.3em;
   background: none;
@@ -156,6 +166,36 @@ aside.panel button.panel-button:hover {
 }
 aside.panel button.panel-button:focus {
   outline: none;
+} */
+
+@media screen and (max-width: 640px) {
+  aside.panel {
+    width: 100%;
+    height: 450px;
+  }
+  .navbar-logo {
+    margin-left: 10px !important;
+  }
+
+  .selectors {
+    height: 450px;
+  }
+
+  .footer_link_styled {
+    padding-right: 10px;
+  }
+
+  .footer_img {
+    margin-left: 10px !important;
+  }
+  .footer_button {
+    font-size: 12px;
+    width: 80px;
+    height: 30px;
+  }
+}
+aside.panel .panel-buttons {
+  margin: 1.3rem 3.5rem;
 }
 
 @-webkit-keyframes fadeIn {
