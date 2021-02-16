@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Navbar from "./components/containers/Navbar";
+import Footer from "./components/containers/Footer";
 import reportWebVitals from "./reportWebVitals";
 //import App from "./App";
 
@@ -12,7 +12,7 @@ class App extends React.Component {
     this.state = {
       activeID: 0,
       wrapperStyle: {
-        backgroundImage: `url('${this.props.data[0].img}')`,
+        display: "none",
       },
       panelStyle: {
         background: this.props.data[0].colour,
@@ -27,11 +27,22 @@ class App extends React.Component {
       },
     };
   }
+  _changeContent(id) {
+    this.setState({
+      activeID: id,
+      panelStyle: {
+        display: "none",
+      },
+      wrapperStyle: {
+        display: "flex",
+      },
+    });
+  }
   _changeActive(id) {
     this.setState({
       activeID: id,
       wrapperStyle: {
-        backgroundImage: `url('${this.props.data[id].img}')`,
+        display: "none",
       },
       panelStyle: {
         backgroundColor: this.props.data[id].colour,
@@ -59,17 +70,22 @@ class App extends React.Component {
     return (
       <div>
         <Navbar />
-        <section className="wrapper" style={this.state.wrapperStyle}>
+        <section className="wrapper">
           <Selectors
             data={this.props.data}
             activeID={this.state.activeID}
             _changeActive={this._changeActive.bind(this)}
+            _changeContent={this._changeContent.bind(this)}
           />
           <Panel
             data={this.props.data[this.state.activeID]}
             panelStyle={this.state.panelStyle}
+            wrapperStyle={this.state.wrapperStyle}
             buttonStyle={this.state.buttonStyle}
             _buttonColour={this._buttonColour.bind(this)}
+            activeID={this.state.activeID}
+            _changeActive={this._changeActive.bind(this)}
+            _changeContent={this._changeContent.bind(this)}
           />
         </section>
         <Footer />
@@ -79,37 +95,94 @@ class App extends React.Component {
 }
 
 class Panel extends React.Component {
+  _changeOnScroll(e) {
+    var actual = this.props.data.id;
+    var delta = e.deltaY;
+    /* 1er cas , il scroll vers le haut quand lélément actif est 0 */
+    if (delta < 0 && actual == 0) {
+      this.props._changeActive(actual);
+    }
+    /* 2e cas , il scroll vers le haut quand lélément actif est different de 0 */
+    if (delta < 0 && actual != 0) {
+      this.props._changeActive(actual - 1);
+    }
+    /* 3e cas , il scroll vers le bas quand lélément actif est 0 */
+    if (delta > 0 && actual == 0) {
+      this.props._changeActive(actual + 1);
+    }
+    /* 4e cas , il scroll vers le bas quand lélément actif est different de 0 */
+    if (delta > 0 && actual != 0 && actual != 4) {
+      this.props._changeActive(actual + 1);
+    }
+    /* 5e cas , il scroll vers le bas quand l'élément actif est juste avant le dernier */
+    if (delta > 0 && actual == 3) {
+      this.props._changeContent(actual + 1);
+    }
+    /* 6e cas , il scroll vers le bas quand lélément actif est le dernier(4) */
+    if (delta > 0 && actual == 4) {
+      this.props._changeContent(actual);
+    }
+  }
   render() {
     return (
-      <aside className="panel" style={this.props.panelStyle}>
-        <h2 className="panel-header">{this.props.data.header}</h2>
-        <p className="panel-info">{this.props.data.body}</p>
-        {/* <button
-          className="panel-button"
-          style={this.props.buttonStyle}
-          onMouseEnter={this.props._buttonColour}
-          onMouseLeave={this.props._buttonColour}
+      <div>
+        <div
+          className="otherPanel container-fluid"
+          style={this.props.wrapperStyle}
+          onWheel={this._changeOnScroll.bind(this)}
         >
-          Read More
-        </button> */}
-        <div className="panel-buttons">
-          <a href="https://apple.com">
-            <img
-              src="https://res.cloudinary.com/dhc0siki5/image/upload/v1613380920/payqin/app_store_grarw1.png"
-              alt=""
-              width="162px"
-            />
-          </a>
-          <a href="https://play.google.com">
-            <img
-              src="https://res.cloudinary.com/dhc0siki5/image/upload/v1613380921/payqin/google_play_ohlmc7.png"
-              alt=""
-              width="162px"
-              height="70px"
-            />
-          </a>
+          <div className="row">
+            <div className="col-lg-12">
+              <img
+                src={this.props.data.cover_url}
+                alt=""
+                className="otherPanel-img"
+              />
+              <h2 className="otherPanel-header">{this.props.data.header}</h2>
+              <p className="otherPanel-info">{this.props.data.body}</p>
+              <p>
+                <a href="#" className="otherPanel-link">
+                  Learn more
+                </a>
+              </p>
+            </div>
+          </div>
         </div>
-      </aside>
+        <aside
+          className="panel"
+          style={this.props.panelStyle}
+          onWheel={this._changeOnScroll.bind(this)}
+        >
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-md-8">
+                <h2 className="panel-header">{this.props.data.header}</h2>
+                <p className="panel-info">{this.props.data.body}</p>
+                <div className="panel-buttons">
+                  <a href="https://apple.com">
+                    <img
+                      src="https://res.cloudinary.com/dhc0siki5/image/upload/v1613380920/payqin/app_store_grarw1.png"
+                      alt=""
+                      width="162px"
+                    />
+                  </a>
+                  <a href="https://play.google.com">
+                    <img
+                      src="https://res.cloudinary.com/dhc0siki5/image/upload/v1613380921/payqin/google_play_ohlmc7.png"
+                      alt=""
+                      width="162px"
+                      height="70px"
+                    />
+                  </a>
+                </div>
+              </div>
+              <div className="col-md-4">
+                <img src={this.props.data.img} alt="" className="panel-image" />
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
     );
   }
 }
@@ -118,6 +191,9 @@ class Selectors extends React.Component {
   _handleClick(e) {
     if (this.props.id !== this.props.activeID) {
       this.props._changeActive(this.props.id);
+      if (this.props.id == 4) {
+        this.props._changeContent(this.props.id);
+      }
     } else {
       return;
     }
@@ -131,6 +207,7 @@ class Selectors extends React.Component {
             id={item.id}
             _handleClick={this._handleClick}
             _changeActive={this.props._changeActive}
+            _changeContent={this.props._changeContent}
             activeID={this.props.activeID}
           />
         ))}
@@ -160,42 +237,43 @@ const data = [
     header: "We’re not a Bank, We’re better",
     body:
       "A safe and secure environment for your internet transactions anywhere in the world",
-    colour: "#242846",
+    colour: "#fff",
     img:
-      /*"https://s3-us-west-2.amazonaws.com/s.cdpn.io/735173/rvc1.jpg"*/ "https://images.unsplash.com/photo-1531471531302-ba2ae5bf6489?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+      "https://res.cloudinary.com/dhc0siki5/image/upload/v1613421274/payqin/ex_pap0qi.png",
   },
   {
     id: 1,
     header: "You like it Virtual Or Physical ?",
     body: "You like it virtual or Physical ? We got both for you",
-    colour: "#ba9077",
+    colour: "#F9F9F9",
     img:
-      /*"https://s3-us-west-2.amazonaws.com/s.cdpn.io/735173/rvc2.jpg"*/ "https://images.unsplash.com/photo-1613243555988-441166d4d6fd?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80",
+      "https://res.cloudinary.com/dhc0siki5/image/upload/v1613406349/Stocklet/A3%20CORE%2015-02-2021/2_p5nfjq.png",
   },
   {
     id: 2,
     header: "Insurance",
     body: "Building the most innovative Insurance platform for Africa",
-    colour: "#1ABC9C",
+    colour: "#FFFFFF",
     img:
-      /*"https://s3-us-west-2.amazonaws.com/s.cdpn.io/735173/rvc3.jpg"*/ "https://smallbizclub.com/wp-content/uploads/2018/09/Types-of-Paperwork-Youll-Have-to-Create.jpg",
+      "https://res.cloudinary.com/dhc0siki5/image/upload/v1613421274/payqin/ex_pap0qi.png",
   },
   {
     id: 3,
     header: "Buy and Sell Crypto",
     body:
       "PayQin is the fastest app to convert your money into bitcoin buying and selling. We got you covered",
-    colour: "#C0392B",
+    colour: "#F9F9F9",
     img:
-      /*"https://s3-us-west-2.amazonaws.com/s.cdpn.io/735173/rvc4.jpg"*/ /*https://images.unsplash.com/photo-1560327308-514b0f2e8869?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"*/ "https://images.unsplash.com/photo-1543699539-33a389c5dcfe?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80",
+      "https://res.cloudinary.com/dhc0siki5/image/upload/v1613406352/Stocklet/A3%20CORE%2015-02-2021/1_a9zl9k.png",
   },
   {
     id: 4,
     header: "Transfer & Merchant Payment",
     body: "Send and Receive Money Instantly",
     colour: "#513B56",
-    img:
-      /*"https://s3-us-west-2.amazonaws.com/s.cdpn.io/735173/rvc5.jpg"*/ "https://images.unsplash.com/photo-1498084393753-b411b2d26b34?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80",
+    cover_url:
+      "https://res.cloudinary.com/dhc0siki5/image/upload/v1613483076/payqin/world_map_fyymxn.jpg",
+    cover_colour: "#242846",
   },
 ];
 
