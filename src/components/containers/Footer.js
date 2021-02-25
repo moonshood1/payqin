@@ -4,7 +4,7 @@ class Footer extends React.Component {
   state = {};
   render() {
     return (
-      <footer className="footer mt-2" style={{ height: "50px" }}>
+      <footer className="footer" style={{ height: "105px" }}>
         <div className="container-fluid">
           <div className="row">
             <div className="col-12 text-center col-md-3">

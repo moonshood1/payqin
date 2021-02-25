@@ -146,7 +146,7 @@ aside.panel {
   height: 540px;
   opacity: 1;
   color: #222222;
-  transition: background 500ms ease-in-out;
+  transition: background 1s ease-in-out;
 }
 aside.panel h2.panel-header,
 aside.panel p.panel-info {

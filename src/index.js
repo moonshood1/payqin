@@ -4,6 +4,7 @@ import "./index.css";
 import Navbar from "./components/containers/Navbar";
 import Footer from "./components/containers/Footer";
 import reportWebVitals from "./reportWebVitals";
+import { Animated } from "react-animated-css";
 //import App from "./App";
 
 class App extends React.Component {
@@ -156,8 +157,16 @@ class Panel extends React.Component {
           <div className="container-fluid">
             <div className="row">
               <div className="col-md-8">
-                <h2 className="panel-header">{this.props.data.header}</h2>
-                <p className="panel-info">{this.props.data.body}</p>
+                <Animated
+                  animationIn="fadeIn"
+                  animationOut="slideOutUp"
+                  animationInDuration="2500"
+                >
+                  <h2 className="panel-header">{this.props.data.header}</h2>
+                </Animated>
+                <Animated animationIn="fadeInLeft" animationInDuration="2000">
+                  <p className="panel-info">{this.props.data.body}</p>
+                </Animated>
                 <div className="panel-buttons">
                   <a href="https://apple.com">
                     <img
@@ -177,7 +186,13 @@ class Panel extends React.Component {
                 </div>
               </div>
               <div className="col-md-4">
-                <img src={this.props.data.img} alt="" className="panel-image" />
+                <Animated animationIn="fadeIn" animationInDuration="4000">
+                  <img
+                    src={this.props.data.img}
+                    alt=""
+                    className="panel-image"
+                  />
+                </Animated>
               </div>
             </div>
           </div>
@@ -239,7 +254,7 @@ const data = [
       "A safe and secure environment for your internet transactions anywhere in the world",
     colour: "#fff",
     img:
-      "https://res.cloudinary.com/dhc0siki5/image/upload/v1613421274/payqin/ex_pap0qi.png",
+      "https://res.cloudinary.com/dhc0siki5/image/upload/v1613579870/payqin/section_1_1_p0bbe0.png",
   },
   {
     id: 1,
@@ -247,7 +262,7 @@ const data = [
     body: "You like it virtual or Physical ? We got both for you",
     colour: "#F9F9F9",
     img:
-      "https://res.cloudinary.com/dhc0siki5/image/upload/v1613406349/Stocklet/A3%20CORE%2015-02-2021/2_p5nfjq.png",
+      "https://res.cloudinary.com/dhc0siki5/image/upload/v1613406349/Stocklet/Produits/A3%20CORE%2015-02-2021/2_p5nfjq.png",
   },
   {
     id: 2,
@@ -264,7 +279,7 @@ const data = [
       "PayQin is the fastest app to convert your money into bitcoin buying and selling. We got you covered",
     colour: "#F9F9F9",
     img:
-      "https://res.cloudinary.com/dhc0siki5/image/upload/v1613406352/Stocklet/A3%20CORE%2015-02-2021/1_a9zl9k.png",
+      "https://res.cloudinary.com/dhc0siki5/image/upload/v1613406352/Stocklet/Produits/A3%20CORE%2015-02-2021/1_a9zl9k.png",
   },
   {
     id: 4,
