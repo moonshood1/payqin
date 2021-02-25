@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/payqin/static/css/main.5f9d12ba.chunk.css",
+    "main.js": "/payqin/static/js/main.446c6ffc.chunk.js",
+    "main.js.map": "/payqin/static/js/main.446c6ffc.chunk.js.map",
+    "runtime-main.js": "/payqin/static/js/runtime-main.d2bee7cc.js",
+    "runtime-main.js.map": "/payqin/static/js/runtime-main.d2bee7cc.js.map",
+    "static/js/2.b1920670.chunk.js": "/payqin/static/js/2.b1920670.chunk.js",
+    "static/js/2.b1920670.chunk.js.map": "/payqin/static/js/2.b1920670.chunk.js.map",
+    "static/js/3.a2e5879c.chunk.js": "/payqin/static/js/3.a2e5879c.chunk.js",
+    "static/js/3.a2e5879c.chunk.js.map": "/payqin/static/js/3.a2e5879c.chunk.js.map",
+    "index.html": "/payqin/index.html",
+    "static/css/main.5f9d12ba.chunk.css.map": "/payqin/static/css/main.5f9d12ba.chunk.css.map",
+    "static/js/2.b1920670.chunk.js.LICENSE.txt": "/payqin/static/js/2.b1920670.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d2bee7cc.js",
+    "static/js/2.b1920670.chunk.js",
+    "static/css/main.5f9d12ba.chunk.css",
+    "static/js/main.446c6ffc.chunk.js"
+  ]
+}
