@@ -103,24 +103,24 @@ class Panel extends React.Component {
     if (delta < 0 && actual == 0) {
       this.props._changeActive(actual);
     }
-    /* 2e cas , il scroll vers le haut quand lélément actif est different de 0 */
-    if (delta < 0 && actual != 0) {
-      this.props._changeActive(actual - 1);
-    }
-    /* 3e cas , il scroll vers le bas quand lélément actif est 0 */
+    /* 2e cas , il scroll vers le bas quand lélément actif est 0 */
     if (delta > 0 && actual == 0) {
       this.props._changeActive(actual + 1);
     }
+    /* 3e cas , il scroll vers le haut quand lélément actif est different de 0 */
+    if (delta < 0 && actual != 0) {
+      this.props._changeActive(actual - 1);
+    }
     /* 4e cas , il scroll vers le bas quand lélément actif est different de 0 */
-    if (delta > 0 && actual != 0 && actual != 4) {
+    if (delta > 0 && actual != 0 && actual != 3) {
       this.props._changeActive(actual + 1);
     }
     /* 5e cas , il scroll vers le bas quand l'élément actif est juste avant le dernier */
-    if (delta > 0 && actual == 3) {
+    if (delta > 0 && actual == 2) {
       this.props._changeContent(actual + 1);
     }
     /* 6e cas , il scroll vers le bas quand lélément actif est le dernier(4) */
-    if (delta > 0 && actual == 4) {
+    if (delta > 0 && actual == 3) {
       this.props._changeContent(actual);
     }
   }
@@ -156,7 +156,7 @@ class Panel extends React.Component {
         >
           <div className="container-fluid">
             <div className="row">
-              <div className="col-md-8">
+              <div className="col-md-7">
                 <Animated
                   animationIn="fadeIn"
                   animationOut="slideOutUp"
@@ -185,7 +185,7 @@ class Panel extends React.Component {
                   </a>
                 </div>
               </div>
-              <div className="col-md-4">
+              <div className="col-md-5">
                 <Animated animationIn="fadeIn" animationInDuration="4000">
                   <img
                     src={this.props.data.img}
@@ -206,7 +206,7 @@ class Selectors extends React.Component {
   _handleClick(e) {
     if (this.props.id !== this.props.activeID) {
       this.props._changeActive(this.props.id);
-      if (this.props.id == 4) {
+      if (this.props.id == 3) {
         this.props._changeContent(this.props.id);
       }
     } else {
@@ -254,7 +254,7 @@ const data = [
       "A safe and secure environment for your internet transactions anywhere in the world",
     colour: "#fff",
     img:
-      "https://res.cloudinary.com/dhc0siki5/image/upload/v1613579870/payqin/section_1_1_p0bbe0.png",
+      "https://res.cloudinary.com/dhc0siki5/image/upload/v1615285675/payqin/img_1_gvbbmu.png",
   },
   {
     id: 1,
@@ -262,27 +262,19 @@ const data = [
     body: "You like it virtual or Physical ? We got both for you",
     colour: "#F9F9F9",
     img:
-      "https://res.cloudinary.com/dhc0siki5/image/upload/v1613406349/Stocklet/Produits/A3%20CORE%2015-02-2021/2_p5nfjq.png",
+      "https://res.cloudinary.com/dhc0siki5/image/upload/v1615285677/payqin/img_3_z75izi.png",
   },
   {
     id: 2,
-    header: "Insurance",
-    body: "Building the most innovative Insurance platform for Africa",
-    colour: "#FFFFFF",
-    img:
-      "https://res.cloudinary.com/dhc0siki5/image/upload/v1613421274/payqin/ex_pap0qi.png",
-  },
-  {
-    id: 3,
     header: "Buy and Sell Crypto",
     body:
       "PayQin is the fastest app to convert your money into bitcoin buying and selling. We got you covered",
     colour: "#F9F9F9",
     img:
-      "https://res.cloudinary.com/dhc0siki5/image/upload/v1613406352/Stocklet/Produits/A3%20CORE%2015-02-2021/1_a9zl9k.png",
+      "https://res.cloudinary.com/dhc0siki5/image/upload/v1615285674/payqin/img_2_aexup4.png",
   },
   {
-    id: 4,
+    id: 3,
     header: "Transfer & Merchant Payment",
     body: "Send and Receive Money Instantly",
     colour: "#513B56",

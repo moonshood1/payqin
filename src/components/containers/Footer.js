@@ -29,14 +29,20 @@ class Footer extends React.Component {
               <a href="#" className="footer_link_styled">
                 help
               </a>
-              <a href="#" className="footer_link_styled">
-                Legal Notice
+              <a
+                href="https://assurance.payqin.com"
+                className="footer_link_styled"
+              >
+                Insurance
               </a>
               <a
                 href="https://ambassadeur.payqin.com/#/"
                 className="footer_link_styled"
               >
                 PayQin Ambassadors
+              </a>
+              <a href="#" className="footer_link_styled">
+                Legal Notice
               </a>
             </div>
             <div className="col-12 mt-2 text-center col-md-3">
